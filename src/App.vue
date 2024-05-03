@@ -1,7 +1,7 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-
-import { onMounted, ref } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import AppointmentForm from '@/components/AppointmentForm.vue';
+import { RouterLink, RouterView } from 'vue-router';
 
 import { auth } from './firebase.js'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
@@ -35,121 +35,218 @@ let logOut = () => {
   })
 }
 
+const showModal = ref(false);
+
+function toggleModal() {
+  showModal.value = !showModal.value;
+  if (showModal.value) {
+    nextTick(() => {
+      document.querySelector('.modal-content').focus();
+    });
+  }
+}
+
+function handleEsc(event) {
+  if (event.key === 'Escape' && showModal.value) {
+    toggleModal();
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleEsc);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleEsc);
+});
+
+function handleSuccess(success) {
+  if (success) {
+    showModal.value = false;
+    alert('Appointment successfully booked!');
+  }
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-     
+  <div class="logo">
+  <img src="@/assets/DentalLogo.png" alt="Logo"> 
+</div>
+    <div class="left-container">
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/navguard">Appointments</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
+        <RouterLink to="/services">Services</RouterLink>
+        <RouterLink to="/about">About Us</RouterLink>
+        <RouterLink to="/contact">Contact Us</RouterLink>
+        <RouterLink to="/navguard" v-if="isLoggedIn">Appointments</RouterLink>
+       <RouterLink to="/login" v-if="!isLoggedIn">Login</RouterLink> <!-- Visible only when not logged in -->
+        <button @click="logOut" v-if="isLoggedIn">Log Out</button> <!-- Visible only when logged in -->
       </nav>
-      <button @click="logOut" v-if="isLoggedIn">Log Out</button>
+    </div>
+    <div class="right-container">
+      <button @click="toggleModal" class="book-appointment-button">Book Appointment</button>
     </div>
   </header>
 
+  <!-- Modal -->
+  <div v-if="showModal" class="modal" @click.self="toggleModal">
+    <div class="modal-content" tabindex="-1">
+      <span @click="toggleModal" class="close">&times;</span>
+      <AppointmentForm @success="handleSuccess"/>
+    </div>
+  </div>
 
   <router-view v-slot="{ Component, route }">
-      <Transition name="fade" mode="out-in">
-        <div :key="route.name">  
-          <component :is="Component"></component>
-        </div>
-      </Transition>
-    </router-view>
-    
-<!-- makes error on switch between views
-  <RouterView v-slot="{ Component }">
-  <Transition name="fade">
-    <component :is="Component" />
-  </Transition>
-</RouterView>
- -->
-
-<!--   <RouterView />  old -->
+    <Transition name="fade" mode="out-in">
+      <div :key="route.name">
+        <component :is="Component"></component>
+      </div>
+    </Transition>
+  </router-view>
 </template>
 
+
 <style scoped>
-
-.fade-enter-active {
-  transition: opacity 0.5s ease;
+* {
+  margin-top: 10px;
 }
 
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-
-
-
+/* General header styling */
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  position: fixed;  
+  right: 0;
+  width: 100%;    
+  z-index: 1000;    
+  display: flex;
+  /* align-items: center; Center items vertically */
+  justify-content: space-between; /* Distribute space between children */
+  padding: 0 20; /* Adjust padding as needed */
+  background-color: #f8f9fa; /* Light gray background */
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2); /* Subtle shadow for header */
 }
+
+
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+   flex: 1;  /* Logo takes 1 part */
+  display: flex;
+  justify-content: flex-start; /* Logo aligned to the left */
+   align-items: center; /* Align items vertically in the center */
+   margin: 0 20px;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.left-container {
+   flex: 2;  /* Navigation and buttons take 2 parts */
+  display: flex;
+  justify-content: space-evenly; 
+  align-items: end; 
+
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.right-container {
+  flex: 1;  /* Book appointment button takes 1 part */
+  display: flex;
+  justify-content: flex-end; /* Content aligned to the right */
+  margin: 0 20px;
+   align-items: center; /* Align items vertically in the center */
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.logo img {
+  max-width: 30%; /* Ensures the logo does not overflow its container */
+  height: auto;
+}
+
+/* Navigation and button styling */
+nav, button {
+  display: flex;
+  align-items: center;
 }
 
 nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  margin-right: 15px; /* Spacing between links */
+  text-decoration: none; /* Removes underline from links */
+  color: #00171F; /* Color adjusted for better contrast */
+  font-size: 16px; /* Font size for navigation links */
 }
 
-nav a:first-of-type {
-  border: 0;
+nav a.router-link-exact-active {
+  font-weight: bold;
+  color: #22A7DF; /* Highlight color for active link */
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+button {
+  padding: 8px 16px;
+  background-color: #00171F; /* Button background */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+button:hover {
+  background-color: #22A7DF; /* Darker blue on hover */
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.book-appointment-button {
+  padding: 10px 20px;
+  background-color: #00171F; /* Background color for appointment button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+.book-appointment-button:hover {
+  background-color: #22A7DF; /* Hover color for appointment button */
+  color: #00171F;
+}
 
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  height: 50%;
+  width: 40%;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid #00171F;
+  border-radius: 40px;
+  font-size: 1.2em;
+  color: #fff;
+  box-shadow: none;
+  outline: none;
+}
+.modal-content:hover {
+  border: 2px solid #22A7DF;
+}
+
+.close {
+  color: #00171F;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #22A7DF;
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>
