@@ -111,45 +111,57 @@ function handleSuccess(success) {
 * {
   margin-top: 10px;
 }
-
 /* General header styling */
 header {
-  position: fixed;  
-  right: 0;
-  width: 100%;    
-  z-index: 1000;    
+  position: relative;
+  width: 100%;
   display: flex;
-  /* align-items: center; Center items vertically */
-  justify-content: space-between; /* Distribute space between children */
-  padding: 0 20; /* Adjust padding as needed */
-  background-color: #f8f9fa; /* Light gray background */
-  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2); /* Subtle shadow for header */
+  align-items: center; /* Ensures vertical centering of all items in the header */
+    justify-content: space-between; /* Distribute space between children */
+  padding: 0 20px; /* Adjust padding as needed */
 }
 
-
-
 .logo {
-   flex: 1;  /* Logo takes 1 part */
+  width: 20%;
   display: flex;
-  justify-content: flex-start; /* Logo aligned to the left */
-   align-items: center; /* Align items vertically in the center */
-   margin: 0 20px;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 20px;
 }
 
 .left-container {
-   flex: 2;  /* Navigation and buttons take 2 parts */
+ width: 60%;
   display: flex;
-  justify-content: space-evenly; 
-  align-items: end; 
+  justify-content: space-around; /* Changed to space-around for better control */
+  align-items: center; /* Aligns items vertically in the center */
+}
 
+.nav-link {
+  margin: 0 15px; /* Adjust the margin as needed for more or less space */
+  text-decoration: none;
+  color: #00171F; /* Example color */
+  font-size: 16px; /* Example font size */
 }
 
 .right-container {
-  flex: 1;  /* Book appointment button takes 1 part */
+  width: 20%;
   display: flex;
-  justify-content: flex-end; /* Content aligned to the right */
+  justify-content: flex-end;
+  align-items: center;
   margin: 0 20px;
-   align-items: center; /* Align items vertically in the center */
+}
+
+/* Styling for buttons and links */
+button, .nav-link {
+  padding: 8px 16px; /* Example padding */
+  background-color: transparent; /* No background for text links */
+  border: none;
+  cursor: pointer;
+}
+
+button:hover, .nav-link:hover {
+  background-color: #22A7DF; /* Example hover effect */
+  color: white; /* Change text color on hover */
 }
 
 .logo img {
