@@ -1,129 +1,113 @@
 <template>
-  <div class="contact-us">
-    <h1>Contact Us</h1>
-    <div class="contact-content">
-      <div class="contact-form">
-        <form @submit.prevent="submitForm">
-          <label for="name">Name:</label>
-          <input type="text" id="name" v-model="form.name" required>
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" v-model="form.email" required>
-
-          <label for="message">Message:</label>
-          <textarea id="message" v-model="form.message" required></textarea>
-
-          <button type="submit">Send Message</button>
-        </form>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section logo-section">
+        <a href="index.html">
+          <img src="@/assets/Logo.png" alt="Company Logo" class="footer-logo">
+        </a>
       </div>
-      <div class="contact-info">
-        <h3>Our Address</h3>
-        <p>123 Example St, City, Country</p>
-        <h3>Phone</h3>
+      <div class="footer-section">
+        <h3>Useful Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <ul class="social-links">
+          <li><a href="#"><i class="fa fa-facebook-f"></i> Facebook</a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fa fa-linkedin-in"></i> LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Address</h3>
+        <p>Cluj-Napoca, Romania</p>
         <p>+123 456 7890</p>
-        <h3>Email</h3>
         <p>info@example.com</p>
       </div>
     </div>
-  </div>
+    <div class="footer-bottom">
+      <p>© 2024 Dr. Andriana Sallum. All rights reserved.</p>
+    </div>
+  </footer>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      form: {
-        name: '',
-        email: '',
-        message: ''
-      }
-    };
-  },
-  methods: {
-    submitForm() {
-      // Here you would handle form submission, like sending data to a server
-      console.log(this.form); // Example of what might be done
-      alert('Message sent!');
-      this.form = { name: '', email: '', message: '' }; // Reset form after submission
-    }
-  }
-}
-</script>
-
 <style scoped>
-.contact-us {
-  padding: 20px;
+.footer {
+  background-color: #00171F;
+  color: #ffffff;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin-top: 40px;
 }
 
-.contact-content {
+.footer-content {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
-  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.contact-form {
-  flex-basis: 50%;
+.footer-section {
+  margin: 20px;
+  flex: 1;
+  min-width: 250px;
 }
 
-.contact-form form {
+.logo-section img.footer-logo {
+  max-width: 250px; /* Adjust the size of the logo */
+  padding-top: 20px;
+  margin-right: 30px;
+}
+
+.footer-section h3 {
+  color: #22A7DF;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 5px;
+}
+
+.footer-section a {
+  color: #ffffff;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: #22A7DF;
+}
+
+.social-links{
   display: flex;
-flex-direction: clolumn;
-align-items: flex-start;
-gap: 10px; /* Spacing between each form element */
+    justify-content: center;
+}
+.social-links a {
+  display: flex;
+  align-items: center;
 }
 
-.contact-form label {
-margin-bottom: 5px;
-font-weight: bold;
+.social-links i {
+  margin-right: 8px;
 }
 
-.contact-form input, .contact-form textarea {
-width: 100%; 
-padding: 8px;
-border: 1px solid #ccc; 
-border-radius: 4px; 
-}
-
-.contact-form button {
-background-color: #0056b3; 
-color: white; 
-padding: 10px 15px;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.3s;
-}
-
-.contact-form button:hover {
-background-color: #003d7a; /* Darker blue on hover */
-}
-
-.contact-info {
-flex-basis: 40%;
-text-align: left;
-}
-
-.contact-info h3 {
-color: #333; /* Dark grey color for subheadings */
-margin-top: 0;
-}
-
-.contact-info p {
-margin-top: 5px;
-}
-
-@media (max-width: 1024px) {
-.contact-content {
-flex-direction: column;
-align-items: center;
-}
-
-.contact-form, .contact-info {
-flex-basis: 100%; 
-max-width: 500px; 
-margin-bottom: 20px; 
-}
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px;
 }
 </style>

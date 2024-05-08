@@ -1,189 +1,92 @@
 <template>
- <h1>Services</h1>
-<p>Hover over the cards.</p>
-
-<section class="main">
-
-  <div class="wrap wrap--1">
-    <div class="container container--1">
-      <p>01. Normal</p>
+  <section class="services-section">
+    <h1>Services</h1>
+    <p>additional text will be insert here</p>
+    <div class="services-container">
+      <!-- Row 1 -->
+      <div class="service-wrap">
+        <div class="service-card">
+          <p>Service 1</p>
+        </div>
+      </div>
+      <div class="service-wrap">
+        <div class="service-card service-card--reverse">
+          <p>Service 2</p>
+        </div>
+      </div>
+      <div class="service-wrap">
+        <div class="service-card">
+          <p>Service 3</p>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="service-wrap">
+        <div class="service-card">
+          <p>Service 4</p>
+        </div>
+      </div>
+      <div class="service-wrap">
+        <div class="service-card service-card--reverse">
+          <p>Service 5</p>
+        </div>
+      </div>
+      <div class="service-wrap">
+        <div class="service-card">
+          <p>Service 6</p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="wrap wrap--2">
-    <div class="container container--2">
-      <p>02. Reverse</p>
-    </div>
-  </div>
-
-  <div class="wrap wrap--3">
-    <div class="container container--3">
-      <p>03. Normal</p>
-    </div>
-  </div>
-
-</section>
-<section class="main">
-
-  <div class="wrap wrap--1">
-    <div class="container container--1">
-      <p>01. Normal</p>
-    </div>
-  </div>
-
-  <div class="wrap wrap--2">
-    <div class="container container--2">
-      <p>02. Reverse</p>
-    </div>
-  </div>
-
-  <div class="wrap wrap--3">
-    <div class="container container--3">
-      <p>03. Normal</p>
-    </div>
-  </div>
-
-</section>
+  </section>
 </template>
 
-
-<style>
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  --background-color: hsl(180, 20%, 90%);
-
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-  min-height: 100vh;
-  padding: 2rem;
-
-  color: hsla(0, 0%, 0%, .6);
-  background: var(--background-color);
+<style scoped>
+.services-section {
   text-align: center;
+  padding: 10vh;
+  font-size: 1.5em;
 }
 
-h1 {
-  font-size: 3.2rem;
-  padding-top: 2rem;
-}
-
-h1+p {
-  font-size: 1.8rem;
-  padding: 2rem 0 3rem;
-}
-
-.main {
+.services-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 1200px;
+  margin: auto;
+  padding-top: 2vh;
 }
 
-.wrap {
-  margin: 2rem;
-
-  transform-style: preserve-3d;
-  transform: perspective(100rem);
-
+.service-wrap {
+  flex: 1 1 30%;
+  max-width: 30%; /* Max width for each card */
+  min-width: 30%; /* Minimum width to prevent cards from getting too small */
   cursor: pointer;
+  perspective: 100rem;
+  display: flex; /* Ensures flex properties apply to children */
+  justify-content: center; /* Center cards within the wrap */
 }
 
-.container {
-  --rX: 0;
-  --rY: 0;
-  --bX: 50%;
-  --bY: 80%;
-
-  width: 30rem;
-  height: 36rem;
-  border: 1px solid var(--background-color);
-  border-radius: 1.6rem;
+.service-card {
+  width: 100%;
+  height: 50%;
   padding: 4rem;
-
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #00171F, #00171F 70%, #00171F);
+  transition: background-color 0.6s, transform 0.6s;
+  box-shadow: 0 0 3rem 0.5rem rgba(0, 0, 0, 0.2);
   display: flex;
+  justify-content: center;
   align-items: flex-end;
-
-  position: relative;
-  transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
-
-  background: linear-gradient(hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1)), url('@/assets/DentalLogo.png');
-  background-position: var(--bX) var(--bY);
-  background-size: 40rem auto;
-  box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2);
-
-  transition: transform .6s 1s;
-}
-
-.container::before,
-.container::after {
-  content: "";
-
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid #fff;
-
-  position: absolute;
-  z-index: 2;
-
-  opacity: .3;
-  transition: .3s;
-}
-
-.container::before {
-  top: 2rem;
-  right: 2rem;
-
-  border-bottom-width: 0;
-  border-left-width: 0;
-}
-
-.container::after {
-  bottom: 2rem;
-  left: 2rem;
-
-  border-top-width: 0;
-  border-right-width: 0;
-}
-
-.container--active {
-  transition: none;
-}
-
-.container--2 {
-  filter: hue-rotate(80deg) saturate(140%);
-}
-
-.container--3 {
-  filter: hue-rotate(160deg) saturate(140%);
-}
-
-.container p {
-  color: hsla(0, 0%, 100%, .6);
+  color: #ffffff; /* Adjust text color for visibility */
   font-size: 2.2rem;
 }
 
-.wrap:hover .container::before,
-.wrap:hover .container::after {
-  width: calc(100% - 4rem);
-  height: calc(100% - 4rem);
+.service-card--reverse {
+  background: linear-gradient(to bottom, #00171F, #00171F 70%, #00171F);
 }
 
-.abs-site-link {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  color: hsla(0, 0%, 0%, .6);
-  font-size: 1.6rem;
+.service-wrap:hover .service-card {
+  background: linear-gradient(to bottom, #22A7DF, #22A7DF 70%, #22A7DF);
+  transform: scale(1.05); /* Adding a scale effect to emphasize hover */
 }
 </style>
