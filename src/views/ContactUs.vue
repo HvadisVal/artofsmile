@@ -1,113 +1,100 @@
+<script setup>
+import { ref } from 'vue';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase'; // make sure path is correct
+
+const appointment = ref({
+  name: '',
+  email: '',
+  phone: '',
+  notes: ''
+});
+
+const submitAppointment = async () => {
+  try {
+    await addDoc(collection(db, 'appointments'), appointment.value);
+    emit('success', true);
+    appointment.value = { name: '', email: '', phone: '', notes: '' };
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    alert('Error: ' + error.message);
+  }
+}
+</script>
+
 <template>
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-section logo-section">
-        <a href="index.html">
-          <img src="@/assets/Logo.png" alt="Company Logo" class="footer-logo">
-        </a>
-      </div>
-      <div class="footer-section">
-        <h3>Useful Links</h3>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <ul class="social-links">
-          <li><a href="#"><i class="fa fa-facebook-f"></i> Facebook</a></li>
-          <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
-          <li><a href="#"><i class="fa fa-linkedin-in"></i> LinkedIn</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Address</h3>
-        <p>Cluj-Napoca, Romania</p>
-        <p>+123 456 7890</p>
-        <p>info@example.com</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024 Dr. Andriana Sallum. All rights reserved.</p>
-    </div>
-  </footer>
+<h1>Contact Us</h1>
+  <div class="form-container">
+    <form @submit.prevent="submitAppointment" class="appointment-form">
+      <input type="text" v-model="appointment.name" placeholder="Name" required>
+      <input type="email" v-model="appointment.email" placeholder="Email" required>
+      <input type="text" v-model="appointment.phone" placeholder="Phone Number" required>
+      <textarea v-model="appointment.notes" placeholder="Additional Notes"></textarea>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
 </template>
 
 <style scoped>
-.footer {
-  background-color: #00171F;
-  color: #ffffff;
-  padding: 40px 0;
+
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appointment-form {
+  width: 100%;
+  max-width: 500px; /* Sets a max-width for the form */
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds subtle shadow */
+  border-radius: 8px; /* Rounded corners for the form */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 40px;
+  gap: 15px; /* Space between form elements */
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 1200px;
-  flex-wrap: wrap;
-  gap: 10px;
+.appointment-form input,
+.appointment-form textarea {
+  padding: 10px; /* Padding inside input and textarea */
+  border: 2px solid #ccc; /* Light grey border for inputs */
+  border-radius: 4px; /* Rounded corners for inputs and textarea */
+  font-size: 16px; /* Increases font size for better readability */
+  width: 100%; /* Ensures inputs take up available width */
 }
 
-.footer-section {
-  margin: 20px;
-  flex: 1;
-  min-width: 250px;
+.appointment-form textarea {
+  height: 120px; /* Sets a fixed height for the textarea */
+  resize: none; /* Disables resizing of the textarea */
 }
 
-.logo-section img.footer-logo {
-  max-width: 250px; /* Adjust the size of the logo */
-  padding-top: 20px;
-  margin-right: 30px;
+.appointment-form button {
+  padding: 10px 20px;
+  background-color: #00171F; /* Blue background for the button */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; /* Matching font size of input for consistency */
+  transition: background-color 0.3s;
 }
 
-.footer-section h3 {
-  color: #22A7DF;
-  margin-bottom: 10px;
+.appointment-form button:hover {
+  background-color: #22A7DF; /* Darker shade of blue on hover */
+  color: #00171F;
 }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section li {
-  margin-bottom: 5px;
-}
-
-.footer-section a {
-  color: #ffffff;
-  transition: color 0.3s;
-}
-
-.footer-section a:hover {
-  color: #22A7DF;
-}
-
-.social-links{
-  display: flex;
+h1 {
+display: flex;
     justify-content: center;
-}
-.social-links a {
-  display: flex;
-  align-items: center;
-}
-
-.social-links i {
-  margin-right: 8px;
-}
-
-.footer-bottom {
-  margin-top: 20px;
-  font-size: 14px;
+color: #00171F; 
+  font-size: 3.2rem; 
+  font-weight: 600; 
+  text-align: center; 
+  margin-bottom: 20px;
+  padding-top: 70px; 
+  margin-left: auto; 
+  margin-right: auto; 
 }
 </style>

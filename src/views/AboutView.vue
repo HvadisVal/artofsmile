@@ -23,11 +23,11 @@
   min-height: 100vh;
   padding: 50px;
   box-sizing: border-box;
-  background: linear-gradient(135deg, rgba(0, 23, 31, 0.8), rgba(34, 167, 223, 0.8));
+  background: #00171F;
 }
 
 .about-section h1 {
-    color: #00171F; /* Dark shade for contrast against lighter backgrounds */
+    color: #22A7DF; /* Dark shade for contrast against lighter backgrounds */
   font-size: 3.2rem; /* Large size for clear section headings */
   font-weight: 600; /* Semi-bold weight for emphasis */
   text-align: center; /* Centers the heading in the section */

@@ -3,41 +3,37 @@
     <h1>Services</h1>
     <p>additional text will be insert here</p>
     <div class="services-container">
-      <!-- Row 1 -->
-      <div class="service-wrap">
-        <div class="service-card">
-          <p>Service 1</p>
-        </div>
-      </div>
-      <div class="service-wrap">
-        <div class="service-card service-card--reverse">
-          <p>Service 2</p>
-        </div>
-      </div>
-      <div class="service-wrap">
-        <div class="service-card">
-          <p>Service 3</p>
-        </div>
-      </div>
-      <!-- Row 2 -->
-      <div class="service-wrap">
-        <div class="service-card">
-          <p>Service 4</p>
-        </div>
-      </div>
-      <div class="service-wrap">
-        <div class="service-card service-card--reverse">
-          <p>Service 5</p>
-        </div>
-      </div>
-      <div class="service-wrap">
-        <div class="service-card">
-          <p>Service 6</p>
+      <div class="service-wrap" v-for="(service, index) in services" :key="index" @click="selectService(service)">
+        <div class="service-card" :class="{ 'service-card--reverse': index % 2 !== 0 }">
+          <p>{{ service.title }}</p>
         </div>
       </div>
     </div>
+    <ServicesBox :service="selectedService" :visible="modalVisible" @update:visible="modalVisible = $event"/>
   </section>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import ServicesBox from '@/components/ServicesBox.vue';
+
+const services = ref([
+  { title: 'Service 1', description: 'Description for Service 1' },
+  { title: 'Service 2', description: 'Description for Service 2' },
+  { title: 'Service 3', description: 'Description for Service 3' },
+  { title: 'Service 4', description: 'Description for Service 4' },
+  { title: 'Service 5', description: 'Description for Service 5' },
+  { title: 'Service 6', description: 'Description for Service 6' },
+]);
+
+const selectedService = ref(null);
+const modalVisible = ref(false);
+
+function selectService(service) {
+  selectedService.value = service;
+  modalVisible.value = true;
+}
+</script>
 
 <style scoped>
 .services-section {

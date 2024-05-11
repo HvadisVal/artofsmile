@@ -1,23 +1,8 @@
 <template>
-<header>
-<div class="logo">
-  <img src="@/assets/DentalLogo.png" alt="Logo"> 
-</div>
-    <div class="left-container">
-      <nav class="navigation">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>
-    </div>
-    <div class="right-container">
-      <button @click="toggleModal" class="book-appointment-button">Book Appointment</button>
-    </div>
-    </header>
 
-<div id="home" class="home-container"> <!-- Home Section -->
+    <!-- Home Section -->
+
+<div id="home" class="home-container"> 
   <div class="home-container">
     <div class="left-column">
       <div class="image-container">
@@ -64,9 +49,12 @@
   <div id="gallery" class="gallery-container"> <!-- Gallery Section -->
     <GalleryBnA />
   </div>
+  <FaqPage />
   <div id="contact" class="contact-container"> <!-- Contact Section -->
     <ContactUs />
+     
   </div>
+
    
 </template>
 
@@ -75,7 +63,8 @@ import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import AppointmentForm from '@/components/AppointmentForm.vue';
 import ServicesView from '@/views/ServicesView.vue';
 import AboutView from '@/views/AboutView.vue';
-import GalleryBnA from '@/views/GalleryBnA.vue';
+import GalleryBnA from '@/components/GalleryBnA.vue';
+import FaqPage from '@/components/FaqPage.vue';
 import ContactUs from '@/views/ContactUs.vue';
 
 const showModal = ref(false);
@@ -110,13 +99,12 @@ function handleSuccess(success) {
   }
 }
 
+
 </script>
 
 
 <style scoped>
-*{
-  scroll-behavior: smooth;
-}
+
 .home-container {
   display: flex;
   justify-content: center;
@@ -149,7 +137,7 @@ function handleSuccess(success) {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px #00171F;
   text-align: center;
   width: 100%;
   max-width: 600px; /* Ensures the box does not grow too large */
@@ -163,7 +151,7 @@ function handleSuccess(success) {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px #00171F;
   text-align: center;
   width: 100%;
   max-width: 600px; /* Ensures the box does not grow too large */
@@ -279,87 +267,5 @@ button:hover {
   background-color: #22A7DF; /* Hover color for appointment button */
   color: #00171F;
 }
-
-
-
-/* Navigation bar */
-header {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 10px 40px;
-  background-color: #f8f9fa; /* Light gray background as seen in the picture */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 100%; /* Ensure the header spans the full width */
-  top: 0; /* Align the header at the top of the viewport */
-  left: 0; /* Align the header to the left of the viewport */
-  position: fixed; /* Fix position relative to the viewport */
-  z-index: 1000; /* Higher z-index ensures it stays on top of other content */
-}
-
-.logo img {
-  height: 60px; /* Adjust the logo size as needed */
-}
-
-.left-container {
-      display: flex;
-    justify-content: end;
-    width: 60%;
-}
-
-.left-container nav {
-  display: flex;
-  align-items: center;
-  gap: 5%;
-}
-
-.left-container a {
-  margin: 0 15px;
-  color: #007bff; /* Bootstrap primary color for links */
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500; /* Semi-bold for better visibility */
-}
-
-.left-container a:hover {
-  text-decoration: underline; /* Adds an underline on hover for better interaction */
-}
-
-.right-container {
-  display: flex;
-  align-items: center;
-  width: 10%;
-    justify-content: end;
-}
-
-.book-appointment-button {
-  padding: 10px 20px;
-  background-color: #28a745; /* Green background color for the button */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.book-appointment-button:hover {
-  background-color: #218838; /* Slightly darker green on hover */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .left-container nav {
-    display: none; /* Optionally hide navigation on smaller screens */
-  }
-
-  header {
-    justify-content: space-evenly;
-  }
-
-  .logo, .right-container {
-    flex: 1;
-    text-align: center;
-  }
-}
-
 
 </style>
