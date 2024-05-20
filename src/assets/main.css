@@ -1,0 +1,59 @@
+
+/* Base font settings */
+body {
+    font-family: 'poppins', sans-serif;
+    background-color: #FAF9F6; /* main color */
+    color: #00171F; /* main dark color */
+  }
+  
+  /* Headings font style - applying Poppins Regular */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'poppins', sans-serif; /* Ensures Poppins is specifically mentioned for clarity */
+  font-weight: 400; /* Poppins Regular */
+  font-style: normal; /* Ensuring the style is explicitly set to normal */
+  color: #00171F; /* Optionally set the color for headings if needed */
+}
+  
+  p, li, a, input, button, textarea {
+    font-weight: 400; /* Poppins Regular for text */
+  }
+  
+  /* Specific font-styles */
+  .light {
+    font-weight: 300; /* Poppins Light */
+  }
+  
+  .italic {
+    font-style: italic; /* Poppins Italic */
+  }
+  
+  .bold {
+    font-weight: 700; /* Poppins Bold */
+  }
+  
+  .bold-italic {
+    font-weight: 700;
+    font-style: italic; /* Poppins Bold Italic */
+  }
+  
+  /* Color Scheme */
+  .primary-color {
+    color: #22A7DF; /* Correcting typo from ##22A7DF to #22A7DF */
+  }
+  
+  .primary-bg {
+    background-color: #22A7DF;
+  }
+  
+  .dark-color {
+    color: #00171F;
+  }
+  
+  .dark-bg {
+    background-color: #00171F;
+  }
+  
+  .light-bg {
+    background-color: #FAF9F6;
+  }
+  

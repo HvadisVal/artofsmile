@@ -45,7 +45,6 @@ const submitAppointment = async () => {
   width: 100%;
   max-width: 500px; /* Sets a max-width for the form */
   padding: 40px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds subtle shadow */
   border-radius: 8px; /* Rounded corners for the form */
   display: flex;
   flex-direction: column;
@@ -75,6 +74,8 @@ const submitAppointment = async () => {
   cursor: pointer;
   font-size: 16px; /* Matching font size of input for consistency */
   transition: background-color 0.3s;
+  margin-left: 20px;
+      box-shadow: 4px 4px 8px -2px #22A7DF;
 }
 
 .appointment-form button:hover {

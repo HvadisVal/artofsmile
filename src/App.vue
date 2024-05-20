@@ -79,7 +79,7 @@ function handleSuccess(success) {
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/services">Services</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/contact">Contact Us</RouterLink>
+        <RouterLink to="/contact">Contact</RouterLink>
       <RouterLink to="/navguard" v-if="isLoggedIn">Appointments</RouterLink>
       <RouterLink to="/login" v-if="!isLoggedIn" class="login-button">Login</RouterLink> <!-- Styled as button -->
       <button @click="logOut" v-if="isLoggedIn">Log Out</button> <!-- Visible only when logged in -->
@@ -139,7 +139,7 @@ function handleSuccess(success) {
   height: 50%;
   width: 40%;
   padding: 12px 20px;
-  background: transparent;
+  background: #faf9f6;
   border: 2px solid #00171F;
   border-radius: 40px;
   font-size: 1.2em;
@@ -185,6 +185,7 @@ button:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+      box-shadow: 4px 4px 8px -2px #22A7DF;
 }
 
 .book-appointment-button:hover {
@@ -196,12 +197,13 @@ button:hover {
 
 /* Navigation bar */
 header {
+  
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding: 10px 40px;
-  background-color: #f8f9fa; /* Light gray background as seen in the picture */
-  box-shadow: 0 2px 4px #00171F;
+  background-color: #FAF9F6; /* Light gray background as seen in the picture */
+  box-shadow: 0 2px 8px #22A7DF;
   width: 100%; /* Ensure the header spans the full width */
   top: 0; /* Align the header at the top of the viewport */
   left: 0; /* Align the header to the left of the viewport */
@@ -227,14 +229,15 @@ header {
 
 .left-container a {
   margin: 0 15px;
-  color: #007bff; /* Bootstrap primary color for links */
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 500; /* Semi-bold for better visibility */
+  font-family: 'poppins', sans-serif; /* Ensures Poppins is specifically mentioned for clarity */
+  font-weight: 400; /* Poppins Regular */
+  font-style: normal; /* Ensuring the style is explicitly set to normal */
+  color: #00171F; /* Optionally set the color for headings if needed */
 }
 
 .left-container a:hover {
-  text-decoration: underline; /* Adds an underline on hover for better interaction */
+  color: #22A7DF;
 }
 
 .right-container {
@@ -246,7 +249,7 @@ header {
 
 .book-appointment-button {
   padding: 10px 20px;
-  background-color: #28a745; /* Green background color for the button */
+  background-color: #00171F; /* Green background color for the button */
   color: white;
   border: none;
   border-radius: 5px;
@@ -254,7 +257,7 @@ header {
 }
 
 .book-appointment-button:hover {
-  background-color: #218838; /* Slightly darker green on hover */
+  background-color: #22A7DF; /* Slightly darker green on hover */
 }
 
 /* Responsive adjustments */

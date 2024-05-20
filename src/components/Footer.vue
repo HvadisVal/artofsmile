@@ -19,10 +19,17 @@
       <div class="footer-section">
         <h3>Follow Us</h3>
         <ul class="social-links">
-          <li><a href="#"><i class="fa fa-facebook-f"></i> Facebook</a></li>
-          <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
-          <li><a href="#"><i class="fa fa-linkedin-in"></i> LinkedIn</a></li>
-        </ul>
+  <li><a href="https://facebook.com" target="_blank" aria-label="Visit our Facebook">
+    <i class='bx bxl-facebook-square'></i>
+  </a></li>
+  <li><a href="https://instagram.com" target="_blank" aria-label="Visit our Instagram">
+    <i class='bx bxl-instagram'></i>
+  </a></li>
+   <li><a href="https://tiktok.com" target="_blank">
+    <i class='bx bxl-tiktok'></i>
+  </a></li>
+</ul>
+
       </div>
       <div class="footer-section">
         <h3>Address</h3>
@@ -110,4 +117,24 @@
   margin-top: 20px;
   font-size: 14px;
 }
+
+.social-links {
+  list-style: none;
+  padding: 0;
+}
+
+.social-links li {
+  display: inline-block;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #22A7DF; /* Change the color as needed */
+  margin-right: 10px; /* Adds spacing between icons */
+}
+
+.social-links i {
+  font-size: 24px; /* Adjust the size as needed */
+}
+
 </style>

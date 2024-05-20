@@ -38,7 +38,7 @@ function selectService(service) {
 <style scoped>
 .services-section {
   text-align: center;
-  padding: 10vh;
+  padding: 140px;
   font-size: 1.5em;
 }
 
@@ -49,7 +49,7 @@ function selectService(service) {
   gap: 60px;
   max-width: 1200px;
   margin: auto;
-  padding-top: 2vh;
+  padding-top: 30px;
 }
 
 .service-wrap {
@@ -75,6 +75,7 @@ function selectService(service) {
   align-items: flex-end;
   color: #ffffff; /* Adjust text color for visibility */
   font-size: 2.2rem;
+  box-shadow: 4px 4px 8px -2px #22A7DF;
 }
 
 .service-card--reverse {

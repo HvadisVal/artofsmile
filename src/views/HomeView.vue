@@ -16,7 +16,7 @@
           <p>There’s no need for metal brackets or wires or long NHS waiting lists. With Invisalign® treatment, we can straighten your smile quickly, discreetly and accurately using virtually invisible aligners.</p>
           <div class="action-items">
             <div class="phone-number">
-              0789 837 8372
+              <p> 0789 837 8372 </p>
             </div>
             <button @click="toggleModal" class="book-appointment-button">Book Appointment</button>
           </div>
@@ -24,11 +24,18 @@
       </div>
       <div class="content-box2">
         <h2>Follow us on Social Media</h2>
-        <div class="social-media-icons">
-          <a href="https://instagram.com" target="_blank">Instagram</a>
-          <a href="https://facebook.com" target="_blank">Facebook</a>
-          <a href="https://tiktok.com" target="_blank">TikTok</a>
-        </div>
+       <div class="social-media-icons">
+  <a href="https://instagram.com" target="_blank">
+    <i class='bx bxl-instagram'></i>
+  </a>
+  <a href="https://facebook.com" target="_blank">
+    <i class='bx bxl-facebook-square'></i>
+  </a>
+  <a href="https://tiktok.com" target="_blank">
+    <i class='bx bxl-tiktok'></i>
+  </a>
+</div>
+
       </div>
     </div>
     <!-- Modal -->
@@ -53,10 +60,10 @@
   <div id="contact" class="contact-container"> <!-- Contact Section -->
     <ContactUs />
      
-  </div>
-
-   
+  </div>  
 </template>
+
+
 
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
@@ -98,9 +105,10 @@ function handleSuccess(success) {
     alert('Appointment successfully booked!');
   }
 }
-
-
 </script>
+
+
+
 
 
 <style scoped>
@@ -113,6 +121,7 @@ function handleSuccess(success) {
  margin-top: 50px;
   gap: 26px; /* Adds space between the image and the content box */
   width: 100%;
+  height: 690px;
 }
 .left-column {
   flex: 1; /* Control width as needed */
@@ -128,16 +137,17 @@ function handleSuccess(success) {
   /* max-width: 600px; */ /* Adjust the width as needed */ 
   height: auto; /* Maintain aspect ratio */
   border-radius: 10px;
+  
 }
 
 .content-box {
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-between; /* Aligns text content to center and action items to bottom */
-  background-color: #f9f9f9;
+  background-color: #FAF9F6;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px #00171F;
+  box-shadow: 4px 4px 8px -2px #22A7DF;
   text-align: center;
   width: 100%;
   max-width: 600px; /* Ensures the box does not grow too large */
@@ -156,6 +166,7 @@ function handleSuccess(success) {
   width: 100%;
   max-width: 600px; /* Ensures the box does not grow too large */
   height: 30%;
+  box-shadow: 4px 4px 8px -2px #22A7DF;
 }
 .text-content {
   flex-grow: 1; /* Allows text content to expand and push action items to the bottom */
@@ -180,6 +191,20 @@ function handleSuccess(success) {
   margin-top: 20px;
   text-align: center;
 }
+.social-media-icons a {
+  text-decoration: none;
+  color: #00171F; /* Change the color as needed */
+  margin-right: 10px; /* Adds spacing between icons */
+  
+}
+.social-media-icons a:hover {
+  color: #22A7DF; /* Change the color as needed */
+}
+.social-media-icons i {
+  font-size: 44px; /* Adjust the size as needed */
+}
+
+
 
 .icons a {
   margin: 0 10px;
@@ -208,6 +233,7 @@ function handleSuccess(success) {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .modal-content {
@@ -215,7 +241,7 @@ function handleSuccess(success) {
   height: 50%;
   width: 40%;
   padding: 12px 20px;
-  background: transparent;
+  background: #faf9f6;
   border: 2px solid #00171F;
   border-radius: 40px;
   font-size: 1.2em;
@@ -233,6 +259,7 @@ function handleSuccess(success) {
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  
 }
 
 .close:hover,
@@ -248,6 +275,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+      box-shadow: 4px 4px 8px -2px #22A7DF;
 }
 
 button:hover {
@@ -261,6 +289,8 @@ button:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 400; /* Poppins Regular for text */
+  
 }
 
 .book-appointment-button:hover {
