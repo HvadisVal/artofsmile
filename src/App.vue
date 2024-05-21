@@ -3,6 +3,8 @@ import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import AppointmentForm from '@/components/AppointmentForm.vue';
 import { RouterLink, RouterView } from 'vue-router';
 import Footer from '@/components/Footer.vue';
+import { bus } from '@/utils/eventBus';
+
 
 import { auth } from './firebase.js'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
@@ -61,6 +63,26 @@ function handleSuccess(success) {
     alert('Appointment successfully booked!');
   }
 }
+
+const initialService = ref('');
+
+onMounted(() => {
+  bus.on('toggleAppointmentModal', (serviceTitle) => {
+  showModal.value = true;
+  initialService.value = serviceTitle;  // Ensure this is set before the modal opens
+  console.log("Event received with service:", serviceTitle);
+});
+});
+
+onUnmounted(() => {
+  bus.off('toggleAppointmentModal');
+});
+
+function handleToggleAppointmentModal() {
+  showModal.value = false;
+  initialService.value = ''; // Reset after closing the modal
+}
+
 </script>
 
 

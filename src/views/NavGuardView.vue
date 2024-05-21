@@ -21,6 +21,7 @@
         <div class="table-cell">Name</div>
         <div class="table-cell">Email</div>
         <div class="table-cell">Phone</div>
+        <div class="table-cell">Service</div>
         <div class="table-cell">Existing Notes</div>
         <div class="table-cell">Additional Notes</div>
       </div>
@@ -31,6 +32,7 @@
         <div class="table-cell">{{ appointment.name }}</div>
         <div class="table-cell">{{ appointment.email }}</div>
         <div class="table-cell">{{ appointment.phone }}</div>
+        <div class="table-cell">{{ appointment.service }}</div>
         <div class="table-cell">{{ appointment.notes }}</div>
         <div class="table-cell">
           <ul>

@@ -32,6 +32,7 @@ const modalVisible = ref(false);
 function selectService(service) {
   selectedService.value = service;
   modalVisible.value = true;
+  EventBus.emit('setService', service.title);
 }
 </script>
 

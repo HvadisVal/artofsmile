@@ -6,12 +6,24 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <!-- Close button at the bottom -->
       <button class="book-appointment-button" @click="close">Close</button>
+      <!-- Trigger Button for Appointment Form Modal -->
+      <button @click="bookAppointment">Book Appointment</button>
+
     </div>
   </div>
+  <!-- Appointment Form Modal -->
+  <appointment-form v-if="showAppointmentForm" @close="showAppointmentForm = false" :initial-service="service.title" />
 </template>
 
 <script setup>
 import { defineProps, defineEmits, onMounted } from 'vue';
+import AppointmentForm from '@/components/AppointmentForm.vue';
+import { bus } from '@/utils/eventBus';
+
+
+function bookAppointment() {
+   bus.emit('toggleAppointmentModal', props.service.title);
+}
 
 const props = defineProps({
   service: Object,
@@ -35,7 +47,6 @@ function close() {
 <style scoped>
 .modal {
   position: fixed;
-  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
@@ -49,6 +60,7 @@ function close() {
 
 .modal-content {
   position: relative;
+  z-index: 10;  /* Lower z-index within the modal context */
   width: 50%; /* Maintain width */
   height: 60%; /* Increased height */
   padding: 20px;
@@ -81,5 +93,4 @@ button:hover {
 .book-appointment-button {
   margin-top: 20px; /* Additional margin for better spacing */
 }
-
 </style>

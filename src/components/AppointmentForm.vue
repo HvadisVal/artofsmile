@@ -1,20 +1,44 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, defineProps } from 'vue';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure path is correct
+
+const props = defineProps({
+  initialService: String
+});
 
 const appointment = ref({
   name: '',
   email: '',
   phone: '',
-  notes: ''
+  notes: '',
+  service: '' // Initial value for the service
 });
+
+const services = ref([
+    { title: 'Service 1', description: 'Description for Service 1' },
+    { title: 'Service 2', description: 'Description for Service 2' },
+    { title: 'Service 3', description: 'Description for Service 3' },
+    { title: 'Service 4', description: 'Description for Service 4' },
+    { title: 'Service 5', description: 'Description for Service 5' },
+    { title: 'Service 6', description: 'Description for Service 6' },
+    { title: 'Other', description: 'Other Services' }
+]);
+
+// Watch for changes to initialService prop to set the default service
+watch(() => props.initialService, (newService, oldService) => {
+  if (newService) {
+    appointment.value.service = newService;
+  }
+}, { immediate: true });
+
 
 const submitAppointment = async () => {
   try {
     await addDoc(collection(db, 'appointments'), appointment.value);
     emit('success', true);
-    appointment.value = { name: '', email: '', phone: '', notes: '' };
+    appointment.value = { name: '', email: '', phone: '', notes: '', service: '' };
+    console.log('Appointment booked successfully!');
   } catch (error) {
     console.error("Error adding document: ", error);
     alert('Error: ' + error.message);
@@ -29,6 +53,11 @@ const submitAppointment = async () => {
       <input type="email" v-model="appointment.email" placeholder="Email" required>
       <input type="text" v-model="appointment.phone" placeholder="Phone Number" required>
       <textarea v-model="appointment.notes" placeholder="Additional Notes"></textarea>
+        <!-- Dropdown for selecting service, with preselected value if provided -->
+      <select v-model="appointment.service" required>
+        <option disabled value="">Please select a service</option>
+        <option v-for="service in services" :key="service.title" :value="service.title">{{ service.title }}</option>
+      </select>
       <button type="submit">Book Appointment</button>
     </form>
   </div>
