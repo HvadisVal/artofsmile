@@ -149,10 +149,7 @@ const submitAppointment = async () => {
     padding: 15px;
     width:100%;
   }
-  .appointment-form button,
-  .appointment-form select {
-    margin-left: 0; /* Remove additional left margin */
-  }
+  
 }
 
 /* Tablets (min-width: 601px and max-width: 992px) */

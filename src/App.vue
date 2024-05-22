@@ -83,6 +83,12 @@ function handleToggleAppointmentModal() {
   initialService.value = ''; // Reset after closing the modal
 }
 
+const burgerMenuOpen = ref(false);
+
+function toggleBurgerMenu() {
+  burgerMenuOpen.value = !burgerMenuOpen.value;
+}
+
 </script>
 
 
@@ -92,20 +98,35 @@ function handleToggleAppointmentModal() {
                                                <!-- Navigation Bar -->
 
 
-  <header>
-<div class="logo">
-  <img src="@/assets/DentalLogo.png" alt="Logo"> 
+   <header>
+    <div class="logo">
+  <router-link to="/">
+    <img src="@/assets/DentalLogo.png" alt="Logo">
+  </router-link>
 </div>
+    <button @click="toggleBurgerMenu" class="burger-menu">&#9776;</button>
+    <div v-if="burgerMenuOpen" class="burger-menu-modal">
+      <button @click="toggleBurgerMenu" class="close-button">&times;</button>
+      <nav class="burger-nav">
+        <RouterLink to="/" @click="toggleBurgerMenu">Home</RouterLink>
+        <RouterLink to="/services" @click="toggleBurgerMenu">Services</RouterLink>
+        <RouterLink to="/about" @click="toggleBurgerMenu">About</RouterLink>
+        <RouterLink to="/contact" @click="toggleBurgerMenu">Contact</RouterLink>
+        <RouterLink to="/navguard" v-if="isLoggedIn" @click="toggleBurgerMenu">Appointments</RouterLink>
+        <RouterLink to="/login" v-if="!isLoggedIn" @click="toggleBurgerMenu">Login</RouterLink>
+        <button v-if="isLoggedIn" @click="logOut">Log Out</button>
+      </nav>
+    </div>
     <div class="left-container">
-    <nav class="navigation">
+      <nav class="navigation">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/services">Services</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
-      <RouterLink to="/navguard" v-if="isLoggedIn">Appointments</RouterLink>
-      <RouterLink to="/login" v-if="!isLoggedIn" class="login-button">Login</RouterLink> <!-- Styled as button -->
-      <button @click="logOut" v-if="isLoggedIn">Log Out</button> <!-- Visible only when logged in -->
-  </nav>
+        <RouterLink to="/navguard" v-if="isLoggedIn">Appointments</RouterLink>
+        <RouterLink to="/login" v-if="!isLoggedIn" class="login-button">Login</RouterLink>
+        <button @click="logOut" v-if="isLoggedIn">Log Out</button>
+      </nav>
     </div>
     <div class="right-container">
       <button @click="toggleModal" class="book-appointment-button">Book Appointment</button>
@@ -158,7 +179,6 @@ function handleToggleAppointmentModal() {
 
 .modal-content {
   position: relative;
-  width: 40%;
   padding: 12px 20px;
   background: #faf9f6;
   /*border: 2px solid #00171F;*/
@@ -217,10 +237,10 @@ button:hover {
 
 
 /* Navigation bar */
+
 header {
-  
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
   background-color: #FAF9F6; /* Light gray background as seen in the picture */
@@ -245,32 +265,36 @@ header {
 .left-container nav {
   display: flex;
   align-items: center;
-  gap: 5%;
+  gap: 20px
 }
 
-.left-container a {
-  margin: 0 15px;
+.left-container a, .left-container button {
   text-decoration: none;
-  font-family: 'poppins', sans-serif; /* Ensures Poppins is specifically mentioned for clarity */
-  font-weight: 400; /* Poppins Regular */
-  font-style: normal; /* Ensuring the style is explicitly set to normal */
-  color: #00171F; /* Optionally set the color for headings if needed */
+  font-family: 'poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #00171F;
+  margin: 0 15px;
 }
 
-.left-container a:hover {
+.left-container button{
+  color: #FAF9F6;
+}
+
+.left-container a:hover, .left-container button:hover {
   color: #22A7DF;
 }
 
 .right-container {
   display: flex;
   align-items: center;
-  width: 10%;
-    justify-content: end;
+  justify-content: end;
+  margin-right: 60px;
 }
 
 .book-appointment-button {
   padding: 10px 20px;
-  background-color: #00171F; /* Green background color for the button */
+  background-color: #00171F; 
   color: white;
   border: none;
   border-radius: 5px;
@@ -278,24 +302,138 @@ header {
 }
 
 .book-appointment-button:hover {
-  background-color: #22A7DF; /* Slightly darker green on hover */
+  background-color: #22A7DF; 
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .left-container nav {
-    display: none; /* Optionally hide navigation on smaller screens */
-  }
 
-  header {
-    justify-content: space-evenly;
-  }
 
-  .logo, .right-container {
-    flex: 1;
-    text-align: center;
-  }
+/* BurgerMenu Open */
+
+@media (min-width: 1070px) {
+.burger-menu {
+  display: none; /* Initially hidden */
 }
+
+.burger-menu-modal {
+  display: none; /* Managed by Vue's v-if */
+}
+}
+
+
+@media (max-width: 1070px) {
+
+header {
+    justify-content: center; /* Centers all elements */
+  }
+
+  .left-container {
+    display: none;
+  }
+
+  .right-container {
+    order: 2; /* Push to the end */
+    flex: 1; /* Allow to take available space */
+    justify-content: flex-end; /* Align the button to the right */
+  }
+
+.book-appointment-button {
+    order: 1; /* Center this button */
+  }
+
+  .burger-menu {
+    display: block;
+    order: 3; /* Position after the appointment button */
+    margin-left: 20px; /* Space between the button and the menu */
+    margin-right: 60px;
+  }
+
+.burger-menu-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.burger-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.burger-nav a, .burger-nav button {
+  padding: 15px;
+  font-size: 24px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  color: #00171F;
+  text-decoration: none;
+}
+
+.burger-nav button{
+  color: #FAF9F6;
+}
+
+.burger-nav a:hover, .burger-nav button:hover {
+  color:#22A7DF;
+  background: none;
+
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #00171F;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-button:hover, .close-button:focus {
+  color: #22A7DF;
+  background: none;
+
+} }
+
+@media (max-width: 500px) {
+.burger-menu {
+    margin-left: -42px; /* Space between the button and the menu */
+  }
+ .modal-content {
+ width: 80%;
+    height: 700px;
+    font-size: inherit;  
+}
+}
+
+@media (max-width: 400px) {
+.burger-menu {
+    margin-left: -55px; /* Space between the button and the menu */
+  }}
+
+@media (max-width: 1190px) {
+.left-container button{
+  margin-right: -40px;
+  margin-left: -10px;
+}}
+  
+  @media (min-width: 600px) {
+ .modal-content {
+ width: 50%;
+    height: 700px;
+    font-size: inherit;  
+}}
 
 
 </style>
