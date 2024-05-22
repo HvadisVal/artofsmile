@@ -1,11 +1,11 @@
 <template>
   <div class="modal" v-if="visible" @click.self="close">
     <div class="modal-content">
+    <button class="close-button" @click="close">×</button> 
+
       <h2>{{ service.title }}</h2>
-      <!-- Lorem ipsum text filling the center -->
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <!-- Close button at the bottom -->
-      <button class="book-appointment-button" @click="close">Close</button>
+  
       <!-- Trigger Button for Appointment Form Modal -->
       <button @click="bookAppointment">Book Appointment</button>
 
@@ -62,8 +62,7 @@ function close() {
   position: relative;
   z-index: 10;  /* Lower z-index within the modal context */
   width: 50%; /* Maintain width */
-  height: 60%; /* Increased height */
-  padding: 20px;
+  padding: 30px;
   background: #fff;
   border: 2px solid #00171F;
   border-radius: 20px;
@@ -84,6 +83,7 @@ button {
   cursor: pointer;
   width: auto; /* Adjust button width */
   margin-top: auto; /* Keeps button at bottom */
+  margin: 15px;
 }
 
 button:hover {
@@ -92,5 +92,26 @@ button:hover {
 
 .book-appointment-button {
   margin-top: 20px; /* Additional margin for better spacing */
+}
+
+.close-button {
+    position: absolute;
+  top: 10px; /* Adjust to position closer to the top-right corner */
+  right: 10px; /* Adjust to position closer to the top-right corner */
+  font-size: 24px; /* Make the 'X' larger */
+  border: none; /* No border */
+  background: none; /* No background */
+  color: #00171F; /* Same color theme */
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #22A7DF;
+  text-decoration: none;
+  cursor: pointer;
+  background: none; /* No background */
 }
 </style>

@@ -158,14 +158,12 @@ function handleToggleAppointmentModal() {
 
 .modal-content {
   position: relative;
-  height: 50%;
   width: 40%;
   padding: 12px 20px;
   background: #faf9f6;
-  border: 2px solid #00171F;
+  /*border: 2px solid #00171F;*/
   border-radius: 40px;
-  font-size: 1.2em;
-  color: #fff;
+  font-size: 20px;
   box-shadow: none;
   outline: none;
 }
@@ -177,7 +175,7 @@ function handleToggleAppointmentModal() {
   color: #00171F;
   float: right;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -194,6 +192,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  
 }
 
 button:hover {

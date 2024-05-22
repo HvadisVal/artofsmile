@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"; // <- needed for DB
 
+
 import { getAuth } from "firebase/auth"; // <- needed for auth (later)
 
 import { getAnalytics } from "firebase/analytics";

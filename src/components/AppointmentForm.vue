@@ -48,6 +48,15 @@ const submitAppointment = async () => {
 
 <template>
   <div class="form-container">
+              <!-- Contact Information -->
+   <div class="contact-info">
+      <p><strong>Pentru programări telefonice, apelați: </strong></p>
+      <p style="color: #22A7DF;"> <strong>0753610154 </strong> </p>
+      <p>Sau</p>
+      <p>Completează formularul de programare și noi te vom contacta:</p>
+    </div>
+
+             <!-- Appointment Form -->
     <form @submit.prevent="submitAppointment" class="appointment-form">
       <input type="text" v-model="appointment.name" placeholder="Name" required>
       <input type="email" v-model="appointment.email" placeholder="Email" required>
@@ -63,52 +72,103 @@ const submitAppointment = async () => {
   </div>
 </template>
 
+
 <style scoped>
 .form-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Ensure the direction is column to stack elements */
   align-items: center;
+  justify-content: center;
+  margin-top: 20px; /* Provide some top margin for overall spacing */
+}
+
+.contact-info {
+  text-align: center;
+  max-width: 500px; /* Align the width with the form */
+}
+.contact-info p {
+  margin-top: 5px;    /* Reduces the space above each paragraph */
+  margin-bottom: 5px; /* Reduces the space below each paragraph */
 }
 
 .appointment-form {
   width: 100%;
-  max-width: 500px; /* Sets a max-width for the form */
+  max-width: 500px;
   padding: 40px;
-  border-radius: 8px; /* Rounded corners for the form */
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Space between form elements */
+  gap: 15px;
 }
 
 .appointment-form input,
+.appointment-form select,
 .appointment-form textarea {
-  padding: 10px; /* Padding inside input and textarea */
-  border: 2px solid #ccc; /* Light grey border for inputs */
-  border-radius: 4px; /* Rounded corners for inputs and textarea */
-  font-size: 16px; /* Increases font size for better readability */
-  width: 100%; /* Ensures inputs take up available width */
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
 }
 
 .appointment-form textarea {
-  height: 120px; /* Sets a fixed height for the textarea */
-  resize: none; /* Disables resizing of the textarea */
+  height: 120px;
+  resize: none;
+}
+
+
+.appointment-form select {
+  margin-left: 20px; /* Adds left margin to the select element */
+  width: calc(100% - 20px); /* Adjust width to maintain form alignment */
 }
 
 .appointment-form button {
   padding: 10px 20px;
-  background-color: #00171F; /* Blue background for the button */
-  color: white; /* White text color */
+  background-color: #00171F;
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px; /* Matching font size of input for consistency */
+  font-size: 16px;
   transition: background-color 0.3s;
-  margin-left: 20px;
-      box-shadow: 4px 4px 8px -2px #22A7DF;
+  margin-left: 21px;
 }
 
 .appointment-form button:hover {
-  background-color: #22A7DF; /* Darker shade of blue on hover */
+  background-color: #22A7DF;
   color: #00171F;
 }
+
+
+
+/* Rensponsivnes */
+
+/* Phones (max-width: 400px) */
+@media only screen and (max-width: 400px) {
+  .appointment-form {
+    padding: 15px;
+    width:100%;
+  }
+  .appointment-form button,
+  .appointment-form select {
+    margin-left: 0; /* Remove additional left margin */
+  }
+}
+
+/* Tablets (min-width: 601px and max-width: 992px) */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .appointment-form {
+    max-width: 100%; /* Use the maximum available width */
+    padding: 20px;
+  }
+}
+
+/* Laptops/Desktops (min-width: 993px) */
+@media only screen and (min-width: 993px) {
+  .appointment-form {
+    max-width: 500px; /* Fixed max width for larger screens */
+    padding: 40px;
+  }
+}
+
 </style>
