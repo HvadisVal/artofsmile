@@ -53,7 +53,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 40px;
+  margin: -8px;
 }
 
 .footer-content {
@@ -85,6 +85,7 @@
 .footer-section ul {
   list-style: none;
   padding: 0;
+  text-decoration: none !important;
 }
 
 .footer-section li {
@@ -94,6 +95,7 @@
 .footer-section a {
   color: #ffffff;
   transition: color 0.3s;
+  text-decoration: none;
 }
 
 .footer-section a:hover {
@@ -103,7 +105,9 @@
 .social-links{
   display: flex;
     justify-content: center;
+     padding-left: 20px !important;
 }
+
 .social-links a {
   display: flex;
   align-items: center;

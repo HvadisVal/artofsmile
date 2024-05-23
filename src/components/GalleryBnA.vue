@@ -1,34 +1,3 @@
-<template>
-<h1>Before & After Gallery</h1>
-  <swiper
-    :modules="modules"
-    :slides-per-view="3"
-    :space-between="50"
-    navigation
-    :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }"
-    @swiper="onSwiper"
-    @slideChange="onSlideChange"
-  >
-    <!-- Proper HTML tag for images -->
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-     <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <swiper-slide><img src="@/assets/dentist.jpg" alt="Description of image"></swiper-slide>
-    <!-- Add more slides as necessary -->
-  </swiper>
-</template>
-
 <script>
 // Import Swiper core and required modules
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -45,6 +14,8 @@ export default {
     Swiper,
     SwiperSlide,
   },
+
+
   setup() {
     const onSwiper = (swiper) => {
       console.log(swiper);
@@ -67,57 +38,107 @@ export default {
           delay: 1500,
           disableOnInteraction: false,
         },
+          // Adding breakpoints for responsiveness
+        breakpoints: {
+          // when window width is <= 480px
+          480: {
+            slidesPerView: 1, // Only one slide per view on small screens
+            spaceBetween: 10 // Smaller space between slides
+          },
+          // Adjust for tablets
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20
+          },
+          // Default settings
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30
+          }
+        },
       },
     };
   },
 };
+
+
 </script>
+
+
+
+<template>
+<h1>Before & After Gallery</h1>
+  <swiper
+    :modules="modules"
+    :slides-per-view="3"
+    :space-between="50"
+    navigation
+    :autoplay="{
+      delay: 2500,
+      disableOnInteraction: false,
+    }"
+    @swiper="onSwiper"
+    @slideChange="onSlideChange"
+  >
+    <!-- Proper HTML tag for images -->
+    <swiper-slide><img src="@/assets/gallery/1.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/2.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/3.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/4.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/5.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/6.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/1.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/2.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/3.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/4.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/5.png" alt="Description of image"></swiper-slide>
+    <swiper-slide><img src="@/assets/gallery/6.png" alt="Description of image"></swiper-slide>
+    <!-- Add more slides as necessary -->
+  </swiper>
+</template>
+
 
 
 
 
 <style scoped>
 
-h1 {
-display: flex;
-    justify-content: center;
-color: #00171F; 
-  font-size: 3.2rem; 
-  font-weight: 600; 
-  text-align: center; 
-  margin-bottom: 20px;
-  padding: 10px 0; 
-  margin-left: auto; 
-  margin-right: auto; 
+h1{
+  text-align: center;
+  font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 40px;
+    padding: 10px 0;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* General Swiper container styling for better spacing and alignment */
 .swiper {
   width: 100%; /* Responsive width */
-  /*max-width: 960px;*/ /* Maximum width to ensure it doesn't look too stretched on larger screens */
   margin: auto; /* Center align the swiper */
-  /*box-shadow: 0 4px 15px rgba(0,0,0,0.2);*/ /* Subtle shadow for depth */
-  border-radius: 8px; /* Rounded corners for a softer look */
   overflow: hidden; /* Ensures nothing hangs outside the rounded corners */
-  height: auto;
+  padding: 20px 0; /* Extra padding to avoid touching the edges */
 }
 
 /* Swiper Slide styling for consistent and appealing appearance */
 .swiper-slide {
-  display: flex; /* Flexbox for better control of items inside the slide */
-  justify-content: center; /* Center horizontal alignment */
-  align-items: center; /* Center vertical alignment */
+  display: contents;
   text-align: center; /* Ensures text inside is centered */
   font-size: 18px; /* Adequate font size */
   background: white; /* Light background for the slides */
   padding: 20px; /* Padding inside slides */
+  min-height: 300px; /* Set a minimum height to ensure images have room to grow */
+  height: 100%; /* Ensuring slide has a height to scale img appropriately */
 }
 
 /* Styling for images inside swiper slides */
 .swiper-slide img {
-  width: 100%; /* Responsive image width */
+  width: 100%; /* Full width of the slide */
   height: auto; /* Maintain aspect ratio */
-  max-height: 300px; /* Maximum height to keep the swiper uniform */
+  max-height: 300px; /* Adjust as needed to ensure visibility and aesthetic */
 }
 
 /* Enhancements for navigation buttons */
@@ -127,6 +148,8 @@ color: #00171F;
   padding: 10px; /* Padding for better touch area */
   border-radius: 50%; /* Circular buttons */
 }
+
+
 
 </style>
 

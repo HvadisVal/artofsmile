@@ -62,6 +62,18 @@ export default {
   padding-top: 70px;
 }
 
+.faq-container h1 {
+text-align: center;
+  font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .faq-question {
   background: #00171F;
   color: #ffffff;
@@ -70,6 +82,7 @@ export default {
   text-align: left;
   border: none;
   border-radius: 5px;
+  box-shadow: 4px 4px 8px -2px #22A7DF;
   margin: 5px 0;
   cursor: pointer;
   font-size: 18px;

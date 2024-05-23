@@ -26,13 +26,12 @@
 
 .about-section h1 {
   color: #22A7DF; /* Dark shade for contrast against lighter backgrounds */
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 600; /* Semi-bold weight for emphasis */
   text-align: center; /* Centers the heading in the section */
   margin-top: 0; /* Removes default margin from the top */
   margin-bottom: 20px; /* Adds space below the heading */
   padding: 10px 0; /* Adds vertical padding without horizontal padding */
-  border-bottom: 2px solid #22A7DF; /* Adds a subtle underline with accent color */
   width: max-content; /* Ensures the border-bottom only spans the text width */
   margin-left: auto; /* Centers the heading when width is max-content */
   margin-right: auto; /* Centers the heading when width is max-content */
@@ -80,13 +79,13 @@
 
 .content h2 {
   color: #00171F;
-  font-size: 2.8rem; /* Adjusted for smaller container */
+  font-size: 23px;
   margin-bottom: 15px;
 }
 
 .content p {
   color: #666;
-  font-size: 1.6rem; /* Smaller text for smaller container */
+  font-size: 20px;
   line-height: 1.8;
   margin-bottom: 10px;
 }

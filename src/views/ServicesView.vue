@@ -43,20 +43,25 @@ function selectService(service) {
   text-align: center;
       padding: 20px 15px;
   margin: 40px;
+  font-size: 25px;
 }
+
+.services-section p {
+  font-size: 20px;
+}
+
 
 .services-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 25px;
+  gap: 45px;
   margin: auto;
   padding-top: 30px;
 }
 
 .service-wrap {
   flex: 1 1 30%;
-  
   cursor: pointer;
   perspective: 100rem;
   display: flex; /* Ensures flex properties apply to children */

@@ -169,9 +169,10 @@ padding: 20px;
 }
 
 .text-content h1 {
-  font-size: 24px; /* Larger font size for headers */
+  font-size: 25px; /* Larger font size for headers */
 }
 .content-box2 h2 {
+  font-size: 25px;
   margin-top: 5px;
 }
 
@@ -323,7 +324,7 @@ button:hover {
   }
 
   .text-content h1 {
-    font-size: 22px; /* Maintain a slightly smaller font size for headers */
+    font-size: 25px; /* Maintain a slightly smaller font size for headers */
      .text-content h1 {
 
     margin-top: -15px;
@@ -405,11 +406,11 @@ button:hover {
   }
 
   .text-content h1 {
-    font-size: 22px; /* Maintain a slightly smaller font size for headers */
+    font-size: 25px; /* Maintain a slightly smaller font size for headers */
   }
 
   .text-content p {
-    font-size: 14px; /* Smaller font size for paragraph text, ensuring readability */
+    font-size: 16px; /* Smaller font size for paragraph text, ensuring readability */
   }
 
   .book-appointment-button {
@@ -475,7 +476,7 @@ button:hover {
   }
 
   .text-content p {
-    font-size: 14px; /* Smaller font size for paragraphs */
+    font-size: 16px; /* Smaller font size for paragraphs */
   }
 
   .content-box, .content-box2 {

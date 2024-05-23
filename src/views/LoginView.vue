@@ -69,9 +69,9 @@ let logIn = () => {
 
 .login-box {
   padding: 40px;
-  background: white;
+  background: #FAF9F6;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 8px -2px #22A7DF;
   width: 300px;
   text-align: center;
 }
@@ -108,6 +108,7 @@ button {
   color: white;
   cursor: pointer;
   margin-top: 10px;
+  margin-left: 3%;
 }
 
 button:hover {
