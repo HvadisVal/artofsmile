@@ -12,8 +12,8 @@
     <div class="right-column">
       <div class="content-box">
         <div class="text-content">
-          <h1>A powerful way to straighten your smile</h1>
-          <p>There’s no need for metal brackets or wires or long NHS waiting lists. With Invisalign® treatment, we can straighten your smile quickly, discreetly and accurately using virtually invisible aligners.</p>
+          <h1>A powerful way to improve your smile</h1>
+          <p>Using advanced dental technologies to ensure that you receive the treatment you need with the least discomfort.The range of services varies from routine dental check-ups, cleanings, and orthodontic treatments, for both adults and children.</p>
           <div class="action-items">
             <div class="phone-number">
               <p style="color: #22A7DF;"> <strong>0789 837 8372 </strong> </p>
@@ -284,6 +284,7 @@ button:hover {
   .left-column, .right-column {
     width: 100%; /* Adjust width to provide more space */
   }
+ 
 }
 
 /* Responsive adjustments for medium-large screens up to 1500px */
@@ -293,6 +294,10 @@ button:hover {
   .action-items, .social-media-icons {
     justify-content: space-around; /* Ensure items are spaced out evenly */
   }
+   .text-content h1 {
+
+    margin-top: -15px;
+}
 }
 
 /* Responsive adjustments for medium screens such as tablets */
@@ -319,6 +324,10 @@ button:hover {
 
   .text-content h1 {
     font-size: 22px; /* Maintain a slightly smaller font size for headers */
+     .text-content h1 {
+
+    margin-top: -15px;
+}
   }
 
   .text-content p {
@@ -349,13 +358,22 @@ button:hover {
   }
 }
 
+@media (min-width: 1200px) and (max-width: 1260px) {
+      .text-content p {
+      font-size: 13px !important;
+      }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+}
+
+@media (min-width: 1200px) and (max-width: 1560px) {
 
  .right-column {
     background-color: #FAF9F6;
   }
+.text-content h1 {
 
+    margin-top: -15px;
+}
   .text-content p {
     padding: 0px; /* Example padding adjustment */
     
