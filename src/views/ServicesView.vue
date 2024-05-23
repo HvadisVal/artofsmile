@@ -1,17 +1,3 @@
-<template>
-  <section class="services-section">
-    <h1>Services</h1>
-    <p>additional text will be insert here</p>
-    <div class="services-container">
-      <div class="service-wrap" v-for="(service, index) in services" :key="index" @click="selectService(service)">
-        <div class="service-card" :class="{ 'service-card--reverse': index % 2 !== 0 }">
-          <p>{{ service.title }}</p>
-        </div>
-      </div>
-    </div>
-    <ServicesBox :service="selectedService" :visible="modalVisible" @update:visible="modalVisible = $event"/>
-  </section>
-</template>
 
 <script setup>
 import { ref } from 'vue';
@@ -36,27 +22,41 @@ function selectService(service) {
 }
 </script>
 
+<template>
+  <section class="services-section">
+    <h1>Services</h1>
+    <p>Below you will find the complete list of our services.<br> <light> For more information, please call or fill out the appointment form. </light> </p>
+    <div class="services-container">
+      <div class="service-wrap" v-for="(service, index) in services" :key="index" @click="selectService(service)">
+        <div class="service-card" :class="{ 'service-card--reverse': index % 2 !== 0 }">
+          <p>{{ service.title }}</p>
+        </div>
+      </div>
+    </div>
+    <ServicesBox :service="selectedService" :visible="modalVisible" @update:visible="modalVisible = $event"/>
+  </section>
+</template>
+
+
 <style scoped>
 .services-section {
   text-align: center;
-  padding: 140px;
-  font-size: 1.5em;
+      padding: 20px 15px;
+  margin: 40px;
 }
 
 .services-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 60px;
-  max-width: 1200px;
+  justify-content: space-evenly;
+  gap: 25px;
   margin: auto;
   padding-top: 30px;
 }
 
 .service-wrap {
   flex: 1 1 30%;
-  max-width: 30%; /* Max width for each card */
-  min-width: 30%; /* Minimum width to prevent cards from getting too small */
+  
   cursor: pointer;
   perspective: 100rem;
   display: flex; /* Ensures flex properties apply to children */
@@ -87,4 +87,7 @@ function selectService(service) {
   background: linear-gradient(to bottom, #22A7DF, #22A7DF 70%, #22A7DF);
   transform: scale(1.05); /* Adding a scale effect to emphasize hover */
 }
+
+
+
 </style>

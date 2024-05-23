@@ -114,4 +114,20 @@ button:hover {
   cursor: pointer;
   background: none; /* No background */
 }
+
+@media (max-width: 777px)  {
+  .modal-content {
+    width: 80%;
+  }
+}
+@media (min-width: 778px)  {
+  .modal-content {
+    width: 50%;
+  }
+}
+@media (min-width: 1200px)  {
+  .modal-content {
+    width: 50%;
+  }
+}
 </style>

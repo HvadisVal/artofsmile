@@ -16,7 +16,7 @@
           <p>There’s no need for metal brackets or wires or long NHS waiting lists. With Invisalign® treatment, we can straighten your smile quickly, discreetly and accurately using virtually invisible aligners.</p>
           <div class="action-items">
             <div class="phone-number">
-              <p> 0789 837 8372 </p>
+              <p style="color: #22A7DF;"> <strong>0789 837 8372 </strong> </p>
             </div>
             <button @click="toggleModal" class="book-appointment-button">Book Appointment</button>
           </div>
