@@ -113,84 +113,80 @@ function handleSuccess(success) {
 
 <style scoped>
 
+        /* Home styling */
 .home-container {
   display: flex;
-  justify-content: center;
-  /*align-items: center;*/
- padding-top: 20px; 
- margin-top: 50px;
-  gap: 26px; /* Adds space between the image and the content box */
-  width: 100%;
-  height: 690px;
+  align-items: flex-start; /* Align items at the start to prevent stretching */
+  margin-top: 70px; /* Adjusted for fixed header */
+  gap: 15px; /* Space between columns */
 }
+
 .left-column {
-  flex: 1; /* Control width as needed */
+  width: 60%;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-column {
+  width: 40%;
   display: flex;
   flex-direction: column;
-  gap: 40px;
 }
+
+/* Styling for the left column specifically for images */
 .image-container img {
-  width: 100%;
-  /* max-width: 600px; */ /* Adjust the width as needed */ 
-  height: auto; /* Maintain aspect ratio */
+  height: 500px;
   border-radius: 10px;
-  
 }
 
-.content-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Aligns text content to center and action items to bottom */
+/* Styling adjustments for the right column content */
+.content-box, .content-box2 {
   background-color: #FAF9F6;
-  padding: 20px;
   border-radius: 10px;
   box-shadow: 4px 4px 8px -2px #22A7DF;
+  margin-bottom: 20px; /* Space between boxes */
   text-align: center;
-  width: 100%;
-  max-width: 600px; /* Ensures the box does not grow too large */
-  height: 70%;
 }
 
-.content-box2 {
-    display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Aligns text content to center and action items to bottom */
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px #00171F;
-  text-align: center;
-  width: 100%;
-  max-width: 600px; /* Ensures the box does not grow too large */
-  height: 30%;
-  box-shadow: 4px 4px 8px -2px #22A7DF;
+.content-box{
+height: 295px;
+padding: 20px;
 }
+
+.book-appointment-button {
+  padding: 5px 20px; /* Reduced padding to make the button thinner */
+  font-size: 16px; /* Adjusted font size if needed */
+  width: auto; /* Adjust width as per content */
+}
+
+.content-box2{
+height: 100px;
+padding: 20px;
+}
+
 .text-content {
-  flex-grow: 1; /* Allows text content to expand and push action items to the bottom */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Vertically centers the text in the available space */
+  padding: 10px;
+}
+
+.text-content h1 {
+  font-size: 24px; /* Larger font size for headers */
+}
+.content-box2 h2 {
+  margin-top: 5px;
+}
+
+.text-content p {
+  font-size: 16px; /* Readable text size */
+  padding: 10px;
 }
 
 .action-items {
-  display: flex;
-  justify-content: space-around;
-  margin-top: auto;
+display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5px;
 }
 
-.phone-number {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.social-media {
-  margin-top: 20px;
-  text-align: center;
-}
 .social-media-icons a {
   text-decoration: none;
   color: #00171F; /* Change the color as needed */
@@ -201,26 +197,13 @@ function handleSuccess(success) {
   color: #22A7DF; /* Change the color as needed */
 }
 .social-media-icons i {
+  margin-top: -5px;
   font-size: 44px; /* Adjust the size as needed */
 }
 
 
 
-.icons a {
-  margin: 0 10px;
-}
-
-.icons img {
-  width: 40px; /* Adjust the size of the social media icons */
-}
-
-.social-media-icons  {
-  display: flex ;
-    justify-content: space-evenly;
-  margin-top: 5px;
-}
-
-/* Modal styling */
+        /* Modal styling */
 .modal {
   position: fixed;
   z-index: 1000;
@@ -233,19 +216,15 @@ function handleSuccess(success) {
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
 .modal-content {
   position: relative;
-  height: 50%;
-  width: 40%;
   padding: 12px 20px;
   background: #faf9f6;
-  border: 2px solid #00171F;
+  /*border: 2px solid #00171F;*/
   border-radius: 40px;
-  font-size: 1.2em;
-  color: #fff;
+  font-size: 20px;
   box-shadow: none;
   outline: none;
 }
@@ -257,9 +236,8 @@ function handleSuccess(success) {
   color: #00171F;
   float: right;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
-  
 }
 
 .close:hover,
@@ -275,7 +253,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-      box-shadow: 4px 4px 8px -2px #22A7DF;
+  
 }
 
 button:hover {
@@ -289,13 +267,207 @@ button:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: 400; /* Poppins Regular for text */
-  
+      box-shadow: 4px 4px 8px -2px #22A7DF;
 }
 
 .book-appointment-button:hover {
   background-color: #22A7DF; /* Hover color for appointment button */
   color: #00171F;
+}
+
+
+
+
+        /* Media Querry */
+
+@media (min-width: 1500px) {
+  .left-column, .right-column {
+    width: 100%; /* Adjust width to provide more space */
+  }
+}
+
+/* Responsive adjustments for medium-large screens up to 1500px */
+@media (max-width: 1500px) {
+
+
+  .action-items, .social-media-icons {
+    justify-content: space-around; /* Ensure items are spaced out evenly */
+  }
+}
+
+/* Responsive adjustments for medium screens such as tablets */
+@media (min-width: 778px ) and (max-width: 1200px) {
+  .home-container {
+    flex-direction: column; /* Stack elements vertically for better readability on medium screens */
+    align-items: center; /* Center align items for consistency */
+  }
+
+  .left-column, .right-column {
+    width: 100%; /* Adjust width to provide more space */
+    display: block; /* Default display to handle content better */
+  }
+  .right-column {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .left-column .image-container img {
+    width: 100%; /* Ensure full usage of the allocated width */
+    height: auto; /* Maintain aspect ratio of images */
+  }
+
+  .text-content h1 {
+    font-size: 22px; /* Maintain a slightly smaller font size for headers */
+  }
+
+  .text-content p {
+    font-size: 14px; /* Smaller font size for paragraph text, ensuring readability */
+  }
+
+  .book-appointment-button {
+    padding: 10px 15px; /* Adequate padding for a comfortable click/tap area */
+    font-size: 14px; /* Smaller font size to fit within the design */
+    width: auto; /* Adjust width as per content size */
+  }
+
+  .action-items {
+    align-items: center; /* Center align the action items */
+    gap: 10px; /* Provide spacing between items */
+  }
+
+  .social-media-icons i {
+    font-size: 30px; /* Adjust icon size for medium screens */
+  }
+
+  .social-media-icons a {
+    margin: 0 10px; /* Adjust margins around social media icons for neatness */
+  }
+
+  .right-column .content-box2 {
+    width: 96%; /* Adjust the height based on new proportions */
+  }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+
+ .right-column {
+    background-color: #FAF9F6;
+  }
+
+  .text-content p {
+    padding: 0px; /* Example padding adjustment */
+    
+    font-size: 16px; /* Smaller font size for paragraph text, ensuring readability */
+  }
+}
+
+
+/* Responsive adjustments for medium screens */
+@media only screen and (max-width: 778px) {
+  .home-container {
+    flex-direction: column; /* Stack elements vertically for better readability on medium screens */
+    align-items: center; /* Center align items for consistency */
+  }
+
+  .left-column, .right-column {
+    width: 100%; /* Adjust width to provide more space */
+    display: block; /* Default display to handle content better */
+  }
+  .right-column {
+    width: 90%;
+    display: flex;
+    align-items: center;
+  }
+
+  .left-column .image-container img, .right-column .content-box, .right-column .content-box2 {
+    width: 100%; /* Ensure full usage of the allocated width */
+    height: auto; /* Maintain aspect ratio of images */
+  }
+
+  .text-content h1 {
+    font-size: 22px; /* Maintain a slightly smaller font size for headers */
+  }
+
+  .text-content p {
+    font-size: 14px; /* Smaller font size for paragraph text, ensuring readability */
+  }
+
+  .book-appointment-button {
+    padding: 10px 15px; /* Adequate padding for a comfortable click/tap area */
+    font-size: 14px; /* Smaller font size to fit within the design */
+    width: auto; /* Adjust width as per content size */
+  }
+
+  .action-items {
+    align-items: center; /* Center align the action items */
+    gap: 10px; /* Provide spacing between items */
+  }
+
+  .social-media-icons i {
+    font-size: 30px; /* Adjust icon size for medium screens */
+  }
+
+  .social-media-icons a {
+    margin: 0 10px; /* Adjust margins around social media icons for neatness */
+  }
+}
+
+/* Very small devices adjustments */
+@media only screen and (max-width: 480px) {
+  .home-container {
+    flex-direction: column; /* Stack the columns vertically */
+    align-items: center; /* Center align the content */
+    gap: 10px; /* Reduce the gap for tighter layout */
+  }
+
+  .left-column, .right-column {
+    width: 100%; /* Make each column take full width */
+    display: flex;
+  }
+
+  .right-column{
+    margin-top: -70px;
+
+  }
+
+  .image-container img {
+    width: 100%; /* Ensure image spans the full width of its container */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .book-appointment-button {
+    font-size: 14px; /* Adjust font size to maintain usability */
+    padding: 8px 16px; /* Adjust padding for smaller screen */
+  }
+
+  .action-items {
+    align-items: center; /* Center align the items */
+    gap: 5px; /* Reduce the gap between items */
+  }
+
+  .text-content {
+    padding: 5px; /* Reduce padding to save space */
+  }
+
+  .text-content h1 {
+    font-weight: 400px;
+    font-size: 25px;
+  }
+
+  .text-content p {
+    font-size: 14px; /* Smaller font size for paragraphs */
+  }
+
+  .content-box, .content-box2 {
+    padding: 15px; /* Adjust padding inside content boxes */
+    
+  }
+
+  .social-media-icons i {
+    font-size: 32px; /* Reduce icon size to fit better */
+  }
 }
 
 </style>

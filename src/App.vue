@@ -282,7 +282,7 @@ header {
 }
 
 .left-container a:hover, .left-container button:hover {
-  color: #22A7DF;
+  color: #00171F;
 }
 
 .right-container {
