@@ -2,7 +2,9 @@
 import { ref, watch, defineProps } from 'vue';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure path is correct
+import { defineEmits } from 'vue'
 
+const emit = defineEmits(['success'])
 const props = defineProps({
   initialService: String
 });

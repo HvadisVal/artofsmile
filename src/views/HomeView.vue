@@ -6,7 +6,7 @@
   <div class="home-container">
     <div class="left-column">
       <div class="image-container">
-        <img src="@/assets/dentist.jpg" alt="Dentist working on patient">
+        <img src="@/assets/dent.jpeg" alt="Dentist working on patient">
       </div>
     </div>
     <div class="right-column">

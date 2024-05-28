@@ -4,7 +4,7 @@ import AppointmentForm from '@/components/AppointmentForm.vue';
 import { RouterLink, RouterView } from 'vue-router';
 import Footer from '@/components/Footer.vue';
 import { bus } from '@/utils/eventBus';
-
+import BackToTop from './components/BackToTop.vue';
 
 import { auth } from './firebase.js'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
@@ -91,7 +91,11 @@ function toggleBurgerMenu() {
 
 </script>
 
-
+export default {
+  components: {
+    BackToTop,
+  },
+};
 <template>
 
 
@@ -154,6 +158,10 @@ function toggleBurgerMenu() {
                                               <!-- Footer -->
 <Footer/>
 
+<div id="app">
+    <!-- Your content here -->
+    <BackToTop />
+  </div>
 </template>
 
 
